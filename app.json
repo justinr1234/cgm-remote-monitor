@@ -1,7 +1,22 @@
 {
   "name": "CGM Remote Monitor",
-  "repository": "https://github.com/nightscout/cgm-remote-monitor",
+  "repository": "https://github.com/justinr1234/cgm-remote-monitor",
   "env": {
+    "LOOP_ENABLE_ALERTS": {
+      "description": "Enable iOS Loop Alerts",
+      "value": "true",
+      "required": false
+    },
+    "LOOP_WARN": {
+      "description": "Enable iOS Loop not looping Warn Threshold in Minutes",
+      "value": "15",
+      "required": false
+    },
+    "LOOP_URGENT": {
+      "description": "Enable iOS Loop not looping Urgent Threshold in Minutes",
+      "value": "30",
+      "required": false
+    },
     "MONGO_COLLECTION": {
       "description": "REQUIRED: The mongo collection used for CGM data. Default value is 'entries'. Most users should use the default.",
       "value": "entries",
@@ -17,9 +32,29 @@
       "value": "",
       "required": false
     },
+    "DEVICESTATUS_ADVANCED": {
+      "description": "Enables advanced features",
+      "value": "true",
+      "required": false
+    },
+    "SHOW_FORECASt": {
+      "description": "Show forcecast loop and/or ar2",
+      "value": "loop ar2",
+      "required": false
+    },
+    "PUMP_FIELDS": {
+      "description": "Show pump fields",
+      "value": "reservoir battery clock status device",
+      "required": false
+    },
+    "TIMEAGO_ENABLE_ALERTS": {
+      "description": "Timeago enable alerts",
+      "value": "true",
+      "required": false
+    },
     "ENABLE": {
       "description": "Used to enable optional features, expects a space delimited list, such as: careportal rawbg iob, see https://github.com/nightscout/cgm-remote-monitor/blob/master/README.md for more info",
-      "value": "",
+      "value": "rawbg iob cob bwp cage treatmentnotify basal bridge maker careportal food sage iage loop pump",
       "required": false
     },
     "DISABLE": {
@@ -29,7 +64,7 @@
     },
     "ALARM_TYPES": {
       "description": "Alarm behavior currently 2 alarm types are supported simple and predict, and can be used independently or combined. The simple alarm type only compares the current BG to BG_ thresholds above, the predict alarm type uses highly tuned formula that forecasts where the BG is going based on it's trend. predict DOES NOT currently use any of the BG_* ENV's",
-      "value": "",
+      "value": "predict",
       "required": false
     },
     "BG_HIGH": {
@@ -79,7 +114,7 @@
     },
     "SHOW_RAWBG": {
       "description": "Possible values always, never or noise",
-      "value": "",
+      "value": "always",
       "required": false
     },
     "BRIDGE_USER_NAME": {
@@ -100,11 +135,6 @@
     "NIGHT_MODE": {
       "description": "Browser defaults to night mode valid settings are on or off",
       "value": "off",
-      "required": false 
-    },
-    "SHOW_RAWBG": {
-      "description": "Browser default raw display mode vaild settings are always never or noise",
-      "value": "never",
       "required": false 
     },
     "THEME": {
